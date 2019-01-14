@@ -28,6 +28,8 @@ urlpatterns = [
 
     url(r'^contact/', include('crmapp.contacts.urls')),
 
+    url(r'^comm/', include('crmapp.communications.urls')),
+
     url(r'^admin/', include(admin.site.urls)),
 
 ]
