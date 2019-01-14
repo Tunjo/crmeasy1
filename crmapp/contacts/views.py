@@ -6,6 +6,8 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
 from crmapp.accounts.models import Account
 from django.utils.decorators import method_decorator
+from django.http import Http404
+from django.views.generic.edit import DeleteView
 
 
 from .models import Contact
@@ -73,7 +75,7 @@ def contact_cru(request, uuid=None, account=None):
 
 
 class ContactMixin(object):
-    meodel = Contact
+    model = Contact
 
     def get_contex_data(self, **kwargs):
         kwargs.update({'object_name': 'Contact'})
@@ -81,3 +83,18 @@ class ContactMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(ContactMixin, self).dispatch(*args, **kwargs)
+
+
+class ContactDelete(ContactMixin, DeleteView):
+    template_name = 'object_confirm_delete.html'
+
+    def get_object(self, queryset=None):
+        obj = super(ContactDelete, self).get_object()
+        if not obj.owner == self.request.user:
+            raise Http404
+        account = Account.objects.get(id=obj.account.id)
+        self.account = account
+        return obj
+
+    def get_success_url(self):
+        return reverse('crmapp.accounts.views.account_detail', args=(self.account.uuid,))
