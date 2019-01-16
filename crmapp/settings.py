@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'crmapp.contacts',
     'crmapp.communications',
     'crmapp.itemstorage',
+    'crmapp.blog',
 )
 
 MIDDLEWARE_CLASSES = (
