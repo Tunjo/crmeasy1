@@ -75,7 +75,6 @@ def account_cru(request, uuid=None):
     else:
         account = Account(owner=request.user)
 
-
     if request.POST:
         form = AccountForm(request.POST, instance=account)
         if form.is_valid():
@@ -88,7 +87,6 @@ def account_cru(request, uuid=None):
             return HttpResponseRedirect(redirect_url)
     else:
         form = AccountForm(instance=account)
-
 
     variables = {
         'form': form,

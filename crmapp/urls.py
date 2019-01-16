@@ -6,6 +6,7 @@ admin.autodiscover()
 
 from marketing.views import HomePage
 
+
 urlpatterns = [
 
 
@@ -29,6 +30,9 @@ urlpatterns = [
     url(r'^contact/', include('crmapp.contacts.urls')),
 
     url(r'^comm/', include('crmapp.communications.urls')),
+
+    url(r'^item/', include('crmapp.itemstorage.urls')),
+
 
     url(r'^admin/', include(admin.site.urls)),
 

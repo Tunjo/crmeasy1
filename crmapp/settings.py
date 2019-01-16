@@ -62,6 +62,7 @@ INSTALLED_APPS = (
     'crmapp.accounts',
     'crmapp.contacts',
     'crmapp.communications',
+    'crmapp.itemstorage',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -129,4 +130,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
-LOGIN_REDERECT_URL = '/account/list'
+LOGIN_REDIRECT_URL = '/account/list/'

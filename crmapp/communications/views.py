@@ -32,7 +32,6 @@ def comm_cru(request, uuid=None, account=None):
     else:
         comm = Communication(owner=request.user)
 
-
     if request.POST:
         form = CommunicationForm(request.POST, instance=comm)
         if form.is_valid():

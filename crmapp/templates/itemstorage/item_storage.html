@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Item List{% endblock title %}
+
+{% block content %}
+    <div id="content-container" class="container p-none">
+
+        <div id="al-container" class="side-p">
+
+             {# List of Item #}
+            <div id="al-control">
+                <h3 class="ad-mh">Account List
+                    {# Add Account Link #}
+                </h3>
+                <span class="pull-right">
+                    <a href="{% url 'item_new' %}"
+                    class="btn btn-link p-r-none">+ Add Items</a>
+                </span><br>
+
+            </div>
+            <ul id="al-group" class="strip-list">
+                {% for item in itemstorages %}
+                    <li class="al-item">
+                        <a href="{{ item.get_update_url }}"><h4 class="al-name">{{ item.name }}</h4></a>
+                        <span class="al-created">created on {{ item.created_on }}</span>
+                        <a href="{{ item.get_delete_url }}">DELETE</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

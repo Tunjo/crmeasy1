@@ -15,7 +15,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     account = models.ForeignKey(Account)
-    owner =models.ForeignKey(User)
+    owner = models.ForeignKey(User)
     created_on = models.DateField(auto_now_add=True)
 
     class Meta:
