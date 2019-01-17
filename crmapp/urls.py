@@ -33,6 +33,8 @@ urlpatterns = [
 
     url(r'^item/', include('crmapp.itemstorage.urls')),
 
+    url(r'^blog/', include('crmapp.blog.urls')),
+
 
     url(r'^admin/', include(admin.site.urls)),
 
